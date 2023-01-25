@@ -1,0 +1,82 @@
+:root {
+    --bg-clr: #FFF;
+    --secondary-clr: #005792;
+    --tertiary-clr: #FD5F00;
+    --bg-clr-two: #F6F6E9;
+    --ff-header: 'Bebas Neue', cursive;
+    --ff-body: 'Montserrat', sans-serif;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-brand:hover {
+    color:var(--tertiary-clr);
+}
+
+.navbar .history ul {
+    list-style: none;
+}
+
+.navbar .history ul a {
+    color: #000;
+    text-decoration: none;
+}
+
+.navbar .history ul a:hover {
+    color: var(--secondary-clr);
+}
+
+.navbar {
+    position: relative;
+}
+
+.navbar ul ul {
+    position: absolute;
+    top: 3em;
+    display: none;
+    background-color: #FFF;
+    line-height: 3em;
+    padding: 1em;
+}
+
+.navbar ul .history:focus-within > ul,
+.navbar ul .history:hover > ul {
+    display: block;
+}
+
+.btn-primary {
+    background-color: var(--tertiary-clr);
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--tertiary-clr);
+    background-image: linear-gradient(rgb(0 0 0/7%) 0 0);
+    transition: 0.3s ease-in;
+}
+
+.add-btn {
+    border-color: var(--tertiary-clr);
+    color: var(--tertiary-clr);
+}
+
+.add-btn:hover {
+    background-color: var(--tertiary-clr);
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+}
+
+table {
+    font-family: var(--ff-body);
+}
+
+@media (min-width:300px) and (max-width:992px) {
+    .navbar ul .history ul{
+        position: relative;
+        top: 0;
+        padding: 0;
+    }
+}
