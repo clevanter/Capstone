@@ -1,5 +1,6 @@
 let thisPage = 1; //current page
 let limit = 11; //item limit
+let head = document.getElementById("table-head");
 let list = document.querySelectorAll('.list-page .item'); //selects the div of table and
 //table rows of the items
 
@@ -14,6 +15,9 @@ function loadItem(){
     list.forEach((item, key)=>{
         if(key >= beginGet && key <= endGet){
             item.style.display = 'table-row'; //condition wherein if may element it will dispalyed as table row
+            head.style.display = "";
+
+            
         }else{
             item.style.display = 'none';
         }
@@ -21,6 +25,7 @@ function loadItem(){
     listPage();
 }
 loadItem();
+
 function listPage(){
     let count = Math.ceil(list.length / limit); //counts the item
     document.querySelector('.listPage').innerHTML = '';
@@ -52,8 +57,12 @@ function listPage(){
         next.setAttribute('onclick', "changePage(" + (thisPage + 1) + ")");
         document.querySelector('.listPage').appendChild(next);
     }
+
 }
 function changePage(i){
     thisPage = i;
     loadItem();
+
 }
+
+

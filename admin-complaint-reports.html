@@ -12,7 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/admin-complaint-reports.css">
-    <link rel="stylesheet" href="css/pagination.css">
+    <!-- pagination was remove, this was added -->
+    <link rel="stylesheet" href="css/filter-&-pagination.css">
 
 </head>
 
@@ -74,193 +75,187 @@
         </div>
     </header>
 
-    <section class="container list-page">
+    <!-- list-page remove -->
+    <section class="container">
 
-    <div class="sort-search">
-        <label for="show">Show</label>
-        <!-- changes: onchange -->
-        <select name="show" id="show" onchange="tableFilter()">
-            <option value="all">All</option>
-            <option value="solved">Solved</option>
-            <option value="pending">Pending</option>
-            <option value="overdue">Overdue</option>
-        </select>
+        <!-- form was added -->
+        <form id="filters" class="max-w-3xl mx-auto flex justify-center p-4">
+            <label for="show">Show</label>
+            <select name="show" id="show">
+                <!-- filter rule: Value === Status ex. pending = pending / Pending = Pending -->
+                <!-- class name was removed and selected was added -->
+                <option value="" selected>All</option>
+                <option value="Solved">Solved</option>
+                <option value="Pending">Pending</option>
+                <option value="Overdue">Overdue</option>
+            </select>
+            <!-- submit button was added -->
+            <button class="text-white px-4 py-2" id="submit-btn">Submit</button>
 
-        <label for="search">Search</label>
-        <input type="text" name="search" id="search" onkeyup="tableSearch()" placeholder="Search">
-    </div>
+            <!-- comment out ko muna yung label since di na siya bagay dahil sa submit button -->
+            <!-- <label for="search">Search</label> -->
+            <!-- class was added para gumitna text tanggalin if babalik na sa dati-->
+            <input type="text" name="search" class="text-center" id="search" onkeyup="tableSearch()" placeholder="Search">
+        </form>
+
+            <table class="table table-hover text-center" id="table">
+                <thead>
+                    <!-- id was added on tr so that table head will be included when searching -->
+                    <!-- id doesn't work on thead tag -->
+                    <tr id="thead">
+                        <th>Report ID</th>
+                        <th>Body No.</th>
+                        <th>Driver's Name</th>
+                        <th>TODA</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>View</th>
+                    </tr>
+                </thead>
         
-        <!-- changes id -->
-        <table class="table table-hover text-center" id="table">
-            <thead>
-                <tr>
-                    <th>Report ID</th>
-                    <th>Body No.</th>
-                    <th>Driver's Name</th>
-                    <th>TODA</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                    <th>View</th>
-                </tr>
-            </thead>
+                <!-- class was added -->
+                <tbody class="tbody">
+                    <tr class="item">
+                        <!-- any td except Status can't have an id(only) attribute -->
+                            <td data-label="Report ID" style="font-weight: bold;" id="report-id">000</td>
+                            <td data-label="Body No." id="body-no">5131</td>
+                            <td data-label="Driver's Name" id="driver">Franz Maaba</td>
+                            <td data-label="TODA" id="toda">Jubilation</td>
+                            <td data-label="Date" id="date">Feb 02 2023</td>
+                            <td class="status" data-label="Status">Pending</td>
+                            <td data-label="View">
+                                <img src="images/view.svg" alt="" class="table-btn view-btn">
+                            </td>
+                    </tr>
 
-            <tbody>
-                <tr class="item">
-                    <!-- changes: niremove ko yung scope=row & th kasi hindi niya mapagana yung filtering pero nilagyan ko na lang ng style -->
-                    <td data-label="Report ID" style="font-weight: bold;">000</td>
-                    <td data-label="Body No.">0513</td>
-                    <td data-label="Driver's Name">Franz Maaba</td>
-                    <td data-label="TODA">Jubilation Toda</td>
-                    <td data-label="Date">Jan 01 2022</td>
-                    <td data-label="Status">Pending</td>
-                    <td data-label="View">
-                        <img src="images/view.svg" alt="" class="table-btn view-btn">
-                    </td>
-                </tr>
+                    <tr class="item">
+                        <td data-label="Report ID" style="font-weight: bold;">001</td>
+                        <td data-label="Body No.">0504</td>
+                        <td data-label="Driver's Name">Hannah Liwanag</td>
+                        <td data-label="TODA">Dela Paz </td>
+                        <td data-label="Date">Jan 03 2022</td>
+                        <td data-label="Status">solved</td>
+                        <td data-label="View">
+                            <img src="images/view.svg" alt="" class="table-btn view-btn">
+                        </td>
+                    </tr>
 
-                <tr class="item">
-                    <td data-label="Report ID" style="font-weight: bold;">001</td>
-                    <td data-label="Body No.">0504</td>
-                    <td data-label="Driver's Name">Hannah Liwanag</td>
-                    <td data-label="TODA">Dela Paz </td>
-                    <td data-label="Date">Jan 03 2022</td>
-                    <td data-label="Status">Solved</td>
-                    <td data-label="View">
-                        <img src="images/view.svg" alt="" class="table-btn view-btn">
-                    </td>
-                </tr>
+                    <tr class="item">
+                        <td data-label="Report ID" style="font-weight: bold;">001</td>
+                        <td data-label="Body No.">0504</td>
+                        <td data-label="Driver's Name">Liyah</td>
+                        <td data-label="TODA">Dela Paz </td>
+                        <td data-label="Date">Jan 03 2022</td>
+                        <td>solved</td>
+                        <td data-label="View">
+                            <img src="images/view.svg" alt="" class="table-btn view-btn">
+                        </td>
+                    </tr>
+        
+                    <tr class="item">
+                        <td data-label="Report ID" style="font-weight: bold;">002</td>
+                        <td data-label="Body No.">0521</td>
+                        <td data-label="Driver's Name">Clark Rayos</td>
+                        <td data-label="TODA">San Francisco Toda</td>
+                        <td data-label="Date">Jan 02 2022</td>
+                        <td >overdue</td>
+                        <td data-label="View">
+                            <img src="images/view.svg" alt="" class="table-btn view-btn">
+                        </td>
+                    </tr>
+        
+                    <tr class="item">
+                        <td data-label="Report ID" style="font-weight: bold;">003</td>
+                        <td data-label="Body No.">0530</td>
+                        <td data-label="Driver's Name">Jhyzel Orcega</td>
+                        <td data-label="TODA">Jubilation Toda</td>
+                        <td data-label="Date">Jan 01 2022</td>
+                        <td data-label="Status">Pending</td>
+                        <td data-label="View">
+                            <img src="images/view.svg" alt="" class="table-btn view-btn">
+                        </td>
+                    </tr>
+        
+                    <tr class="item">
+                        <td data-label="Report ID" style="font-weight: bold;">004</td>
+                        <td data-label="Body No.">0517</td>
+                        <td data-label="Driver's Name">Erika</td>
+                        <td data-label="TODA">Dela Paz </td>
+                        <td data-label="Date">Jan 09 2022</td>
+                        <td data-label="Status">Solved</td>
+                        <td data-label="View">
+                            <img src="images/view.svg" alt="" class="table-btn view-btn">
+                        </td>
+                    </tr>
+        
+                    <tr class="item">
+                        <td data-label="Report ID" style="font-weight: bold;">005</td>
+                        <td data-label="Body No.">0528</td>
+                        <td data-label="Driver's Name">Moze</td>
+                        <td data-label="TODA">San Francisco Toda</td>
+                        <td data-label="Date">Jan 02 2022</td>
+                        <td data-label="Status">Pending</td>
+                        <td data-label="View">
+                            <img src="images/view.svg" alt="" class="table-btn view-btn">
+                        </td>
+                    </tr>
+        
+                    <tr class="item">
+                        <td data-label="Report ID" style="font-weight: bold;">006</td>
+                        <td data-label="Body No.">0519</td>
+                        <td data-label="Driver's Name">Christopher</td>
+                        <td data-label="TODA">Jubilation Toda</td>
+                        <td data-label="Date">Jan 01 2022</td>
+                        <td data-label="Status">Pending</td>
+                        <td data-label="View">
+                            <img src="images/view.svg" alt="" class="table-btn view-btn">
+                        </td>
+                    </tr>
+        
+                    <tr class="item">
+                        <td data-label="Report ID" style="font-weight: bold;">007</td>
+                        <td data-label="Body No.">0527</td>
+                        <td data-label="Driver's Name">Dan</td>
+                        <td data-label="TODA">Dela Paz </td>
+                        <td data-label="Date">Jan 04 2022</td>
+                        <td data-label="Status">Solved</td>
+                        <td data-label="View">
+                            <img src="images/view.svg" alt="" class="table-btn view-btn">
+                        </td>
+                    </tr>
+        
+                    <tr class="item">
+                        <td data-label="Report ID" style="font-weight: bold;">009</td>
+                        <td data-label="Body No.">0517</td>
+                        <td data-label="Driver's Name">Althea</td>
+                        <td data-label="TODA">Jubilation Toda</td>
+                        <td data-label="Date">Jan 05 2022</td>
+                        <td data-label="Status">Pending</td>
+                        <td data-label="View">
+                            <img src="images/view.svg" alt="" class="table-btn view-btn">
+                        </td>
+                    </tr>
+        
+                    <tr class="item">
+                        <td data-label="Report ID" style="font-weight: bold;">010</td>
+                        <td data-label="Body No.">0533</td>
+                        <td data-label="Driver's Name">Markie</td>
+                        <td data-label="TODA">Dela Paz</td>
+                        <td data-label="Date">Jan 02 2022</td>
+                        <td data-label="Status">Solved</td>
+                        <td data-label="View">
+                            <img src="images/view.svg" alt="" class="table-btn view-btn">
+                        </td>
+                    </tr>
+        
+                </tbody>
+            </table>
 
-                <tr class="item">
-                    <td data-label="Report ID" style="font-weight: bold;">002</td>
-                    <td data-label="Body No.">0521</td>
-                    <td data-label="Driver's Name">Clark Rayos</td>
-                    <td data-label="TODA">San Francisco Toda</td>
-                    <td data-label="Date">Jan 02 2022</td>
-                    <td data-label="Status">Overdue</td>
-                    <td data-label="View">
-                        <img src="images/view.svg" alt="" class="table-btn view-btn">
-                    </td>
-                </tr>
-
-                <tr class="item">
-                    <td data-label="Report ID" style="font-weight: bold;">003</td>
-                    <td data-label="Body No.">0530</td>
-                    <td data-label="Driver's Name">Jhyzel Orcega</td>
-                    <td data-label="TODA">Jubilation Toda</td>
-                    <td data-label="Date">Jan 01 2022</td>
-                    <td data-label="Status">Pending</td>
-                    <td data-label="View">
-                        <img src="images/view.svg" alt="" class="table-btn view-btn">
-                    </td>
-                </tr>
-
-                <tr class="item">
-                    <td data-label="Report ID" style="font-weight: bold;">004</td>
-                    <td data-label="Body No.">0517</td>
-                    <td data-label="Driver's Name">Erika</td>
-                    <td data-label="TODA">Dela Paz </td>
-                    <td data-label="Date">Jan 09 2022</td>
-                    <td data-label="Status">Solved</td>
-                    <td data-label="View">
-                        <img src="images/view.svg" alt="" class="table-btn view-btn">
-                    </td>
-                </tr>
-
-                <tr class="item">
-                    <td data-label="Report ID" style="font-weight: bold;">005</td>
-                    <td data-label="Body No.">0528</td>
-                    <td data-label="Driver's Name">Moze</td>
-                    <td data-label="TODA">San Francisco Toda</td>
-                    <td data-label="Date">Jan 02 2022</td>
-                    <td data-label="Status">Overdue</td>
-                    <td data-label="View">
-                        <img src="images/view.svg" alt="" class="table-btn view-btn">
-                    </td>
-                </tr>
-
-                <tr class="item">
-                    <td data-label="Report ID" style="font-weight: bold;">006</td>
-                    <td data-label="Body No.">0519</td>
-                    <td data-label="Driver's Name">Christopher</td>
-                    <td data-label="TODA">Jubilation Toda</td>
-                    <td data-label="Date">Jan 01 2022</td>
-                    <td data-label="Status">Pending</td>
-                    <td data-label="View">
-                        <img src="images/view.svg" alt="" class="table-btn view-btn">
-                    </td>
-                </tr>
-
-                <tr class="item">
-                    <td data-label="Report ID" style="font-weight: bold;">007</td>
-                    <td data-label="Body No.">0527</td>
-                    <td data-label="Driver's Name">Dan</td>
-                    <td data-label="TODA">Dela Paz </td>
-                    <td data-label="Date">Jan 04 2022</td>
-                    <td data-label="Status">Solved</td>
-                    <td data-label="View">
-                        <img src="images/view.svg" alt="" class="table-btn view-btn">
-                    </td>
-                </tr>
-
-                <tr class="item">
-                    <td data-label="Report ID" style="font-weight: bold;">008</td>
-                    <td data-label="Body No.">0521</td>
-                    <td data-label="Driver's Name">Han</td>
-                    <td data-label="TODA">San Francisco Toda</td>
-                    <td data-label="Date">Jan 05 2022</td>
-                    <td data-label="Status">Overdue</td>
-                    <td data-label="View">
-                        <img src="images/view.svg" alt="" class="table-btn view-btn">
-                    </td>
-                </tr>
-
-                <tr class="item">
-                    <td data-label="Report ID" style="font-weight: bold;">009</td>
-                    <td data-label="Body No.">0517</td>
-                    <td data-label="Driver's Name">Althea</td>
-                    <td data-label="TODA">Jubilation Toda</td>
-                    <td data-label="Date">Jan 05 2022</td>
-                    <td data-label="Status">Pending</td>
-                    <td data-label="View">
-                        <img src="images/view.svg" alt="" class="table-btn view-btn">
-                    </td>
-                </tr>
-
-                <tr class="item">
-                    <td data-label="Report ID" style="font-weight: bold;">010</td>
-                    <td data-label="Body No.">0533</td>
-                    <td data-label="Driver's Name">Markie</td>
-                    <td data-label="TODA">Dela Paz</td>
-                    <td data-label="Date">Jan 02 2022</td>
-                    <td data-label="Status">Solved</td>
-                    <td data-label="View">
-                        <img src="images/view.svg" alt="" class="table-btn view-btn">
-                    </td>
-                </tr>
-
-                <tr class="item">
-                    <td data-label="Report ID" style="font-weight: bold;">011</td>
-                    <td data-label="Body No.">0100</td>
-                    <td data-label="Driver's Name">Adi</td>
-                    <td data-label="TODA">San Francisco Toda</td>
-                    <td data-label="Date">Jan 01 2022</td>
-                    <td data-label="Status">Overdue</td>
-                    <td data-label="View">
-                        <img src="images/view.svg" alt="" class="table-btn view-btn">
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <nav aria-label="Page navigation example">
-            <ul class="listPage pagination justify-content-end">
-              <!-- <li class="page-item mx-2"><a class="page-link" href="#">Previous</a></li>
-              <li class="page-item me-1 active"><a class="page-link" href="#">1</a></li>
-              <li class="page-item me-1"><a class="page-link" href="#">2</a></li>
-              <li class="page-item me-1"><a class="page-link" href="#">3</a></li>
-              <li class="page-item mx-1"><a class="page-link" href="#">Next</a></li> -->
-            </ul>
-        </nav>
+            <!-- nav was remove, div for pagination was added -->
+        <div class="pagination d-flex justify-content-end justify-center my-5">
+            <div class="page" id="page">
+            </div>
+        </div>
     </section>
 
     <footer>
@@ -270,8 +265,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
     <script src="js/search.js"></script>
-    <script src="js/filtering.js"></script>
-    <script src="js/pagination.js"></script>
+    <!-- two js was remove, one was added -->
+    <script src="js/report-filtering-pagination.js"></script>
+    <script src="js/admin-report.js"></script>
 
 </body>
 </html>

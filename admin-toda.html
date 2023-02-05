@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/admin-toda.css">
     <link rel="stylesheet" href="css/popup-modal.css">
+    <!-- if hindi magagawan ng paraan yung button sa ibang pages remove this na lang para same -->
     <link rel="stylesheet" href="css/pagination.css">
+    <link rel="stylesheet" href="css/filter-&-pagination.css">
 </head>
 
 <body>
@@ -74,23 +76,26 @@
         </div>
     </header>
 
-    <section class="container list-page">
+    <section class="container">
 
-    <div class="table-controllers">
-        <div class="sort-search">
-            <label for="search">Search</label>
-            <input type="text" name="search" id="search" placeholder="Search" onkeyup="tableSearch()">
-        </div>
+        <form id="filters" class="max-w-3xl mx-auto flex justify-center p-4">
+            <div class="table-controllers">
+                <div class="sort-search">
+                    <label for="search">Search</label>
+                    <input type="text" name="search" id="search" placeholder="Search" onkeyup="tableSearch()">
+                </div>
+            
+                <div class="btns">
+                    <button class="btn btn-primary btn-sm" id="upload">Upload</button>
+                    <button class="btn btn-outline-primary btn-sm add-btn" id="add">Add</button>
+                </div>
+            </div>
+        </form>
+
     
-        <div class="btns">
-            <button class="btn btn-primary btn-sm" id="upload">Upload</button>
-            <button class="btn btn-outline-primary btn-sm add-btn" id="add">Add</button>
-        </div>
-    </div>
-          
         <table class="table table-hover text-center" id="table">
             <thead>
-                <tr>
+                <tr id="thead">
                     <th>TODA</th>
                     <th>President</th>
                     <th>Contact #</th>
@@ -99,9 +104,9 @@
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody class="tbody">
                 <tr class="item">
-                    <th scope="row" data-label="TODA">ATOY'S TODA</th>
+                    <td data-label="TODA" style="font-weight: bold;">ATOY'S TODA</td>
                     <td data-label="President">Full Name</td>
                     <td data-label="Contact">+639123459786</td>
                     <td data-label="Edit">
@@ -294,15 +299,9 @@
             </tbody>
         </table>
 
-        <nav aria-label="Page navigation example">
-            <ul class="listPage pagination justify-content-end">
-              <!-- <li class="page-item mx-2"><a class="page-link" href="#">Previous</a></li>
-              <li class="page-item me-1 active"><a class="page-link" href="#">1</a></li>
-              <li class="page-item me-1"><a class="page-link" href="#">2</a></li>
-              <li class="page-item me-1"><a class="page-link" href="#">3</a></li>
-              <li class="page-item mx-1"><a class="page-link" href="#">Next</a></li> -->
-            </ul>
-        </nav>
+        <div class="pagination d-flex justify-content-end justify-center my-5">
+            <div class="page"></div>
+        </div>
     </section>
 
     <div class="popup-box" id="add-popup">
@@ -355,6 +354,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
     <script src="js/admin-toda.js"></script>
     <script src="js/search.js"></script>
-    <script src="js/pagination.js"></script>
+    <!-- i used the old pagination for this one -->
+    <!-- <script src="js/pagination.js"></script> -->
+    <script src="js/toda-filtering-pagination.js"></script>
 </body>
 </html>

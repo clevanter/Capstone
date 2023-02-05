@@ -116,6 +116,9 @@ thead {
     color: #FFFFFF;
 }
 
+td {
+    padding: 5px;
+}
 @media (min-width:320px) and (max-width:992px) {
 
     /* h5 {
