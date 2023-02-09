@@ -125,7 +125,9 @@ function ReverseGeocodeFrom() {
     if('FROM_LatLng' in locations) {
         
         //ADD MARKER A TO MAP
-        var MARKER_A = L.marker([locations.FROM_LatLng[0], locations.FROM_LatLng[1]]).addTo(group);
+        var MARKER_A = L.marker(
+            [locations.FROM_LatLng[0], 
+            locations.FROM_LatLng[1]]).addTo(group);
         map.addLayer(MARKER_A);
 
         var reverse = `https://api.geoapify.com/v1/geocode/reverse?lat=${locations.FROM_LatLng[0]}&lon=${locations.FROM_LatLng[1]}&apiKey=${geoapify}`;
@@ -187,6 +189,28 @@ function DisplayRoute() {
                 longitude: lastChild[0][1]
             }
         );
+
+        let getDistance = () => {
+            if ((lat1 == lat2) && (lon1 == lon2)) {
+                return 0;
+            }
+            else {
+                var radlat1 = Math.PI * lat1/180;
+                var radlat2 = Math.PI * lat2/180;
+                var theta = lon1-lon2;
+                var radtheta = Math.PI * theta/180;
+                var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+                if (dist > 1) {
+                    dist = 1;
+                }
+                dist = Math.acos(dist);
+                dist = dist * 180/Math.PI;
+                dist = dist * 60 * 1.1515;
+                if (unit=="K") { dist = dist * 1.609344 }
+                if (unit=="N") { dist = dist * 0.8684 }
+                return dist;
+            }
+        }
 
         KM = geolib.convertDistance(dist, 'km'); 
         roundKM = Math.round(KM * 100) / 100;
