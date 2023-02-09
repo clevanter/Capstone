@@ -78,14 +78,14 @@
 
     <section class="container">
 
-        <form id="filters" class="max-w-3xl mx-auto flex justify-center p-4">
+        <form id="filters" class="max-w-3xl mx-auto">
             <div class="table-controllers">
                 <div class="sort-search">
-                    <label for="search">Search</label>
-                    <input type="text" name="search" id="search" placeholder="Search" onkeyup="tableSearch()">
+                    <label for="search-label">Search</label>
+                    <input type="text" name="search" id="search" placeholder="Search">
                 </div>
             
-                <div class="btns">
+                <div class="btns flex-row-reverse">
                     <button class="btn btn-primary btn-sm" id="upload">Upload</button>
                     <button class="btn btn-outline-primary btn-sm add-btn" id="add">Add</button>
                 </div>
@@ -106,7 +106,19 @@
 
             <tbody class="tbody">
                 <tr class="item">
-                    <td data-label="TODA" style="font-weight: bold;">ATOY'S TODA</td>
+                    <td data-label="TODA" style="font-weight: bold;">Atoy's Toda</td>
+                    <td data-label="President">Aliyah</td>
+                    <td data-label="Contact">+639215125385</td>
+                    <td data-label="Edit">
+                        <img src="images/pen.svg" alt="" class="table-btn edit-btn">
+                    </td>
+                    <td data-label="Delete">
+                        <img src="images/trash.svg" role="button" alt="" class="table-btn delete-btn">
+                    </td>
+                </tr>
+
+                <tr class="item">
+                    <td data-label="TODA" style="font-weight: bold;">BCM Toda</td>
                     <td data-label="President">Full Name</td>
                     <td data-label="Contact">+639123459786</td>
                     <td data-label="Edit">
@@ -118,7 +130,7 @@
                 </tr>
 
                 <tr class="item">
-                    <th scope="row" data-label="TODA">BCM TODA</th>
+                    <td data-label="TODA" style="font-weight: bold;">BIG S TODA</td>
                     <td data-label="President">Full Name</td>
                     <td data-label="Contact">+639123459786</td>
                     <td data-label="Edit">
@@ -130,7 +142,7 @@
                 </tr>
 
                 <tr class="item">
-                    <th scope="row" data-label="TODA">BIG S TODA</th>
+                    <td data-label="TODA" style="font-weight: bold;">BLSJ TODA</td>
                     <td data-label="President">Full Name</td>
                     <td data-label="Contact">+639123459786</td>
                     <td data-label="Edit">
@@ -142,7 +154,7 @@
                 </tr>
 
                 <tr class="item">
-                    <th scope="row" data-label="TODA">BLSJ TODA</th>
+                    <td data-label="TODA" style="font-weight: bold;">BUNGAHAN TODA</td>
                     <td data-label="President">Full Name</td>
                     <td data-label="Contact">+639123459786</td>
                     <td data-label="Edit">
@@ -154,7 +166,7 @@
                 </tr>
 
                 <tr class="item">
-                    <th scope="row" data-label="TODA">BUNGAHAN TODA</th>
+                    <td data-label="TODA" style="font-weight: bold;">CANLALAY TODA</td>
                     <td data-label="President">Full Name</td>
                     <td data-label="Contact">+639123459786</td>
                     <td data-label="Edit">
@@ -166,7 +178,7 @@
                 </tr>
 
                 <tr class="item">
-                    <th scope="row" data-label="TODA">CANLALAY TODA</th>
+                    <td data-label="TODA" style="font-weight: bold;">CGC TODA</td>
                     <td data-label="President">Full Name</td>
                     <td data-label="Contact">+639123459786</td>
                     <td data-label="Edit">
@@ -178,7 +190,7 @@
                 </tr>
 
                 <tr class="item">
-                    <th scope="row" data-label="TODA">CGC TODA</th>
+                    <td data-label="TODA" style="font-weight: bold;">DELA PAZ TODA</td>
                     <td data-label="President">Full Name</td>
                     <td data-label="Contact">+639123459786</td>
                     <td data-label="Edit">
@@ -190,7 +202,7 @@
                 </tr>
 
                 <tr class="item">
-                    <th scope="row" data-label="TODA">DELA PAZ TODA</th>
+                    <td data-label="TODA" style="font-weight: bold;">DROLMETE TODA</td>
                     <td data-label="President">Full Name</td>
                     <td data-label="Contact">+639123459786</td>
                     <td data-label="Edit">
@@ -202,7 +214,7 @@
                 </tr>
 
                 <tr class="item">
-                    <th scope="row" data-label="TODA">DROLMETE TODA</th>
+                    <td data-label="TODA" style="font-weight: bold;">Toda Name</td>
                     <td data-label="President">Full Name</td>
                     <td data-label="Contact">+639123459786</td>
                     <td data-label="Edit">
@@ -214,7 +226,7 @@
                 </tr>
 
                 <tr class="item">
-                    <th scope="row" data-label="TODA">Toda Name</th>
+                    <td data-label="TODA" style="font-weight: bold;">GANADA TODA</td>
                     <td data-label="President">Full Name</td>
                     <td data-label="Contact">+639123459786</td>
                     <td data-label="Edit">
@@ -226,7 +238,7 @@
                 </tr>
 
                 <tr class="item">
-                    <th scope="row" data-label="TODA">GANADA TODA</th>
+                    <td data-label="TODA" style="font-weight: bold;">JG TODA</td>
                     <td data-label="President">Full Name</td>
                     <td data-label="Contact">+639123459786</td>
                     <td data-label="Edit">
@@ -238,7 +250,7 @@
                 </tr>
 
                 <tr class="item">
-                    <th scope="row" data-label="TODA">JG TODA</th>
+                    <td data-label="TODA" style="font-weight: bold;">JUBILATION TODA</td>
                     <td data-label="President">Full Name</td>
                     <td data-label="Contact">+639123459786</td>
                     <td data-label="Edit">
@@ -250,7 +262,7 @@
                 </tr>
 
                 <tr class="item">
-                    <th scope="row" data-label="TODA">JUBILATION TODA</th>
+                    <td data-label="TODA" style="font-weight: bold;">LANGKIWA PROPER TODA</td>
                     <td data-label="President">Full Name</td>
                     <td data-label="Contact">+639123459786</td>
                     <td data-label="Edit">
@@ -262,7 +274,7 @@
                 </tr>
 
                 <tr class="item">
-                    <th scope="row" data-label="TODA">LANGKIWA PROPER TODA</th>
+                    <td data-label="TODA" style="font-weight: bold;">LANGKIWA TODA</td>
                     <td data-label="President">Full Name</td>
                     <td data-label="Contact">+639123459786</td>
                     <td data-label="Edit">
@@ -274,19 +286,7 @@
                 </tr>
 
                 <tr class="item">
-                    <th scope="row" data-label="TODA">LANGKIWA TODA</th>
-                    <td data-label="President">Full Name</td>
-                    <td data-label="Contact">+639123459786</td>
-                    <td data-label="Edit">
-                        <img src="images/pen.svg" alt="" class="table-btn edit-btn">
-                    </td>
-                    <td data-label="Delete">
-                        <img src="images/trash.svg" role="button" alt="" class="table-btn delete-btn">
-                    </td>
-                </tr>
-
-                <tr class="item">
-                    <th scope="row" data-label="TODA">LOMA TODA</th>
+                    <td data-label="TODA" style="font-weight: bold;">LOMA TODA</td>
                     <td data-label="President">Full Name</td>
                     <td data-label="Contact">+639123459786</td>
                     <td data-label="Edit">
@@ -353,9 +353,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
     <script src="js/admin-toda.js"></script>
-    <script src="js/search.js"></script>
+    <!-- <script src="js/search.js"></script> -->
     <!-- i used the old pagination for this one -->
     <!-- <script src="js/pagination.js"></script> -->
-    <script src="js/toda-filtering-pagination.js"></script>
+    <script src="js/toda-nav.js"></script>
 </body>
 </html>

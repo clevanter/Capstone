@@ -76,12 +76,7 @@
 
     <section class="container">
 
-        <div class="btns d-flex row-reverse">
-            <button class="btn btn-primary btn-sm" id="upload">Upload</button>
-            <button class="btn btn-outline-primary btn-sm add-btn" id="add">Add</button>
-        </div>
-
-    <form id="filters" class="max-w-3xl mx-auto flex justify-center p-4">
+    <form id="filters" class="max-w-3xl mx-auto flex justify-center ">
         <div class="table-controllers">
             <div class="sort-search">
     
@@ -94,13 +89,15 @@
                     <!-- reminder: kung ano yung value ng option ganun din dapat yung nakalagay sa toda name sa table para ma-filter yung toda -->
                     <!-- doesn't matter if upper/lower case ang mahalaga parehas ng words/letters -->
                     <!-- sample: if sa option: dela paz | table: dela paz din dapat -->
-                </select>
-                <button class="text-white px-4 py-2" id="submit-btn">Submit</button>
-        
+                </select>        
                 <!-- <label for="search">Search</label> -->
                 <input type="text" name="search" id="search" class="text-center" placeholder="Search" onkeyup="tableSearch()">
             </div>
-        
+            
+            <div class="btns">
+                <button class="btn btn-primary btn-sm" id="upload">Upload</button>
+                <button class="btn btn-outline-primary btn-sm add-btn" id="add">Add</button>
+            </div>
 
         </div>
     </form>
@@ -237,7 +234,7 @@
 
                 <tr class="item">
                     <td data-label="TODA" style="font-weight: bold;">Jubilation</td>
-                    <td data-label="President">Full Name</td>
+                    <td data-label="President">Aliyah</td>
                     <td data-label="President">Body Num</td>
                     <td data-label="Contact">+639123459786</td>
                     <td data-label="Edit">
@@ -361,6 +358,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
     <script src="js/admin-drivers.js"></script>
     <script src="js/search.js"></script>
-    <script src="js/toda-filtering-pagination.js"></script>
+    <script src="js/driver-nav.js"></script>
 </body>
 </html>
