@@ -1,11 +1,12 @@
 const wrapper = document.querySelector(".table .tbody"); //makes sure that the table and body (designed) is included
 const pagination = document.querySelector(".pagination");
 const items = Array.from(document.querySelectorAll(".item"));
+console.log(items)
 let filteredItems = items;
 let filt = items;
 let currPage = 1;
 
-document.querySelector(".select")
+document.querySelectorAll("select")
 filters.addEventListener("change", function(evt){
   
       let input = document.getElementById("search")
@@ -16,23 +17,60 @@ filters.addEventListener("change", function(evt){
       //filter only
       if (type || keyword) {
         filteredItems = items.filter(el => el.querySelector('td:nth-child(6)').innerHTML.indexOf(type) > -1
-        && el.querySelector('td:nth-child(2)').innerHTML.toUpperCase().indexOf(keyword) > -1)
+        && el.querySelector('td:nth-child(3)').innerHTML.toUpperCase().indexOf(keyword) > -1)
 
+        input.addEventListener("keypress", function(event) {
+          // If the user presses the "Enter" key on the keyboard
+          if (event.key === "Enter") {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            // Trigger the button element with a click
+            // document.getElementById("myBt").click();
+          }
+        });
       }
-      else {
-          filteredItems = items;
+        // if(keyword){ 
+        //   filteredItems = items.filter(el => el.querySelector('td:nth-child(1)').innerHTML.toUpperCase().indexOf(keyword) > -1 
+        //   || el.querySelector('td:nth-child(2)').innerHTML.toUpperCase().indexOf(keyword) > -1
+        //   || el.querySelector('td:nth-child(3)').innerHTML.toUpperCase().indexOf(keyword) > -1
+        //   || el.querySelector('td:nth-child(4)').innerHTML.toUpperCase().indexOf(keyword) > -1
+        //   || el.querySelector('td:nth-child(5)').innerHTML.toUpperCase().indexOf(keyword) > -1)
+        // }
+        
+        //if yung keyword may same data sa td then it will return yung filteredItems
+        // search only, i separated them since mas nagana yung logic na if and if unlike sa only if
+        // else if(!keyword || type){
+        //     filteredItems = items.filter(el => el.querySelector('td:nth-child(6)').innerHTML.indexOf(type) > -1)
+        // }
+        // else if(keyword && !type){
+        //     filteredItems = items.filter(el => el.querySelector('td:nth-child(3)').innerHTML.indexOf(keyword) > -1)
+        // }
+        // else if(!keyword && !type){
+        //     filteredItems = items.filter(el => el.querySelector('td:nth-child(6)').innerHTML.indexOf(type) > -1
+        // && el.querySelector('td:nth-child(3)').innerHTML.indexOf(keyword) > -1
+        // )
+        // }
+        else {
+            filteredItems = items;
+        }
         // else once yung value "" was selected return all items then search condition
-      }
+
 
       currPage = 1;
       if (filteredItems.length !== 1) {
         pagination.style.display = "flex";
-        console.log(setHTML(filteredItems))
-      }
+        setHTML(filteredItems)
+      } 
+      // else if(filteredItems.length === 1){
+      //   pagination.style.display = "none";
+      //   wrapper.innerHTML = "<p>No Data Found.</p>"
+      //   setHTML(filteredItems)
+
+      // }
       else {
         pagination.style.display = "none";
         wrapper.innerHTML = "<p>No Data Found.</p>"
-        setHTML(filteredItems);
+        setHTML(filteredItems)
       }
 		}) 
 
@@ -94,23 +132,27 @@ function setHTML(items) {
 
   //creates the page of pagination
   const nav = document.createElement("nav")
-  nav.classList.add(...['relative', 'z-0', 'inline-flex',  '-space-x-px', ])
+  nav.classList.add(...['relative', 'z-0', 'inline-flex', 'rounded-md',  '-space-x-px', ])
 
   //previous button
   let paginationHTML = ""
-  paginationHTML += `<button ${currentPage === 1 && 'disabled'} class=" ${currentPage === 1 ? 'cursor-not-allowed' : 'prev'} relative inline-flex items-center px-2 py-2 mx-1 rounded rounded-l-md text-sm font-medium btn btn-secondary">Previous</button>`
+  paginationHTML += `<button ${currentPage === 1 && 'disabled'} class=" ${currentPage === 1 ? 'cursor-not-allowed' : 'prev'} relative inline-flex items-center px-2 py-2  mx-1 shadow rounded rounded-l-md border border-primary bg-white text-sm font-medium text-blue-500 hover:bg-blue" >
+                <span aria-hidden = "true">Previous</span>
+            </button>`
 
   //method for the current page
   pages.forEach(page => {
     if (currentPage === page) {
-      paginationHTML += `<button class="btn btn-thirtiary z-10 relative inline-flex justify-content-end items-center px-3 py-2 mx-1 shadow rounded text-sm font-medium" page="${page}" ${currentPage === page}>${page}</button>`
+      paginationHTML += `<button class="z-10 bg-indigo-50 border-primary text-indigo-600 relative inline-flex justify-content-end items-center px-3 py-2 mx-1 shadow rounded border text-sm font-medium" page="${page}" ${currentPage === page}>${page}</button>`
     } else {
-      paginationHTML += `<button class="btn btn-secondary  page relative inline-flex items-center px-3 py-2 mx-1 shadow rounded text-sm font-medium" page="${page}" ${currentPage === page}>${page}</button>`
+      paginationHTML += `<button class="page bg-white border-primary text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-3 py-2 mx-1 shadow rounded border text-sm font-medium" page="${page}" ${currentPage === page}>${page}</button>`
     }
   })
 
   //next button
-  paginationHTML += `<button ${currentPage === endPage && 'disabled'} class="${currentPage === endPage ? 'cursor-not-allowed' : 'next'} btn btn-secondary relative inline-flex items-center px-3 py-2 mx-1 shadow-sm rounded rounded-r-md text-sm font-medium">Next</button>`
+  paginationHTML += `<button ${currentPage === endPage && 'disabled'} class="${currentPage === endPage ? 'cursor-not-allowed' : 'next'} relative inline-flex items-center px-3 py-2 mx-1 shadow rounded rounded-r-md border border-primary bg-white text-sm font-medium text-gray-500 hover:bg-gray-50" id="next-btn">
+                <span class="sr-only">Next</span>
+            </button>`
 
   nav.innerHTML = paginationHTML
   pagination.append(nav)
