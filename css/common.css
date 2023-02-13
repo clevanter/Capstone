@@ -52,10 +52,21 @@
     border: none;
 }
 
-.btn-primary:hover {
+.btn-primary:hover .btn-secondary:hover .btn-thirtiary:hover {
     background-color: var(--tertiary-clr);
     background-image: linear-gradient(rgb(0 0 0/7%) 0 0);
     transition: 0.3s ease-in;
+}
+
+.btn-secondary {
+    background-color: #005792;
+    border: none;
+}
+
+.btn-thirtiary {
+    background-color: #FD5F00;
+    color: #faf2ed;
+    font-weight: 600;   
 }
 
 .add-btn {

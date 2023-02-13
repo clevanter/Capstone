@@ -156,6 +156,15 @@ td {
         position: relative;
     }
 
+    .report-id{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        display: block;
+        line-height: 1.5em; /* a */
+        max-height: 5em;
+    }
+
     .table td::before,
     .table th::before {
         content: attr(data-label);
