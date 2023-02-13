@@ -55,7 +55,7 @@
                     </li>
 
                     <li>
-                        <a class="nav-link" href="fare-calc.html">Fare Calculator</a>
+                        <a class="nav-link" href="fare-calc.html">Fare Meter</a>
                     </li>
 
                     <li>
@@ -79,15 +79,16 @@
     <div class="title">
         <h5>Missing Item Report History</h5>
         
-        <div class="search">
-            <input type="text" class="form-control" placeholder="Search">
-            <img src="images/search.svg">
-        </div>
+        <form id="filters" class="max-w-3xl">
+            <div class="search">
+                <input type="text" name="search" class="text-center" id="search" placeholder="Search">
+            </div>
+        </form>
     </div>
           
         <table class="table table-hover text-center">
             <thead>
-                <tr>
+                <tr id="thead">
                     <th>Report ID</th>
                     <th>Body No.</th>
                     <th>Driver's Name</th>
@@ -97,9 +98,9 @@
                 </tr>
             </thead>
 
-            <tbody>
-                <tr>
-                    <th scope="row" data-label="Report ID">000</th>
+            <tbody class="tbody">
+                <tr class="item">
+                    <td data-label="Report ID" style="font-weight: bold;" id="report-id">000</th>
                     <td data-label="Body No.">0505</td>
                     <td data-label="Driver's Name">Juan Dela Cruz</td>
                     <td data-label="TODA">Dela Paz Toda</td>
@@ -107,8 +108,8 @@
                     <td data-label="Status">Pending</td>
                 </tr>
 
-                <tr>
-                    <th scope="row" data-label="Report ID">001</th>
+                <tr class="item">
+                    <td data-label="Report ID" style="font-weight: bold;" id="report-id">001</th>
                     <td data-label="Body No.">1234</td>
                     <td data-label="Driver's Name">Franz Maaba</td>
                     <td data-label="TODA">Jubilation Toda</td>
@@ -118,6 +119,11 @@
 
             </tbody>
         </table>
+
+        <div class="pagination d-flex justify-content-end justify-center my-5">
+            <div class="page" id="page">
+            </div>
+        </div>
     </section>
 
     <footer>
@@ -126,6 +132,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+    <script src="js/toda-nav.js"></script>
 
 </body>
 </html>
